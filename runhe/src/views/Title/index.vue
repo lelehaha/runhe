@@ -3,8 +3,9 @@
     <header class="title_header">
       <el-button type="primary" @click="showAdd">新增标题</el-button>
     </header>
-    <Add :state="state" @cancle="cancle" @success="success"></Add>    <!-- 增加 -->
-    <Edit :state="state" @cancle="cancle"></Edit>  <!-- 编辑 -->
+    <Add :state="state" @cancle="cancle" @success="success"></Add> 
+       <!-- 增加 -->
+    <Edit :state="statee" :eid="edit.id" :ename="edit.name" @cancle="cancle" @success="success"></Edit>  <!-- 编辑 -->
     <el-table
     :data="tableData"
     style="width: 100%"
@@ -42,7 +43,12 @@ export default {
     return {
      tableData: [],
      state: false,
-     fullscreenLoading: false
+     statee: false,
+     fullscreenLoading: false,
+     edit: {
+      id: 0,
+      name: '',
+     }
     }
   },
   created() {
@@ -66,9 +72,9 @@ export default {
       });
     },
     handleEdit(index, row) {
-        this.state = true;
-        console.log(row)
-        console.log(index, row);
+        this.statee = true;
+        this.edit.id = row.id;
+        this.edit.name = row.name;
     },
     handleDelete(index, row) {
       this.$confirm('此操作将永久删除该标题, 是否继续?', '提示', {
@@ -110,6 +116,7 @@ export default {
     },
     cancle() {
       this.state = false;
+      this.statee = false;
     },
     success() {
       this.rerenderTableData();

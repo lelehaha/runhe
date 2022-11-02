@@ -45,7 +45,7 @@ export default {
     methods: {
         submitForm(name) {
             this.$refs[name].validate((state) => {
-                if(state) {
+                if(state) { 
                    let name = this.formLabelAlign.name;
                    let formData = new FormData();
                    formData.append('name', name)

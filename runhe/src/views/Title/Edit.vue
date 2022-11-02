@@ -1,16 +1,16 @@
 <template>
    <div class="edit" v-if="state">
     <div class="edit_form">
-        <el-form  label-position="center" label-width="auto" :model="formLabelAlign">
-            <el-form-item label="编号">
-                <el-input v-model="formLabelAlign.id"></el-input>
+        <el-form :rules="rules" ref="ruleEdit" label-position="center" label-width="auto" :model="formLabelAlign">
+            <el-form-item label="编号" prop="id">
+                <el-input v-model="formLabelAlign.id" disabled></el-input>
             </el-form-item>
-            <el-form-item label="名称">
+            <el-form-item label="名称" prop="name">
                 <el-input v-model="formLabelAlign.name"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="submitForm('ruleForm')">确认</el-button>
-                <el-button class="edit_form_right_button" @click="cancleForm('ruleForm')">取消</el-button>
+                <el-button type="primary" @click="submitEdit('ruleEdit')">确认</el-button>
+                <el-button class="edit_form_right_button" @click="cancleEdit('ruleEdit')">取消</el-button>
             </el-form-item>
          </el-form>
     </div>
@@ -20,10 +20,28 @@
 <script>
 export default {
     data() {
+        const validateId = (rule, value, callback) => {
+            if(value === '') {
+                callback(new Error('请输入编号'));
+            }else {
+                callback();
+            }
+        };
+        const validateName = (rule, value, callback) => {
+            if(value === '') {
+                callback(new Error('请输入名称'));
+            }else {
+                callback();
+            }
+        };
         return {
             formLabelAlign: {
-                id: '',
-                name: '',
+                id: this.eid,
+                name: this.ename,
+            },
+            rules: {
+                id: [{ validator: validateId, trigger: 'blur'}],
+                name: [{ validator: validateName, trigger: 'blur'}]
             }
         }
     },
@@ -34,13 +52,50 @@ export default {
                 return true;
             }
         },
-        
+        eid: Number,
+        ename: String
+    },
+    watch: {
+        eid(val) {
+            this.formLabelAlign.id = val;    //props赋值给data是异步的，先初始化才把值传递过来
+        },
+        ename(val) {
+            this.formLabelAlign.name = val;
+        }
     },
     methods: {
-        submitForm() {
-
+        submitEdit(name) {
+            this.$refs[name].validate((state) => {
+                if(state) {
+                    let id = this.formLabelAlign.id.toString();
+                    let name = this.formLabelAlign.name;
+                    this.$http({
+                        url: 'api/classify',
+                        method: 'PUT',
+                        data: `pk=${id}&name=${name}`
+                    }).then(res => {
+                        if(res.data.status == 'success') {
+                            this.$message({
+                                type: 'success',
+                                message: res.data.msg
+                            })
+                            console.log(typeof id,1,id);
+                            this.$emit('cancle');
+                            this.$emit('success');
+                        }else {
+                            this.$message.error(res.data.msg);
+                            console.log(typeof id,2,id)
+                        }
+                    }).catch(error => {
+                        this.message.error('接口异常')
+                    })
+                }else {
+                    return false;
+                }
+            })
+            this.$emit('success')
         },
-        cancleForm() {
+        cancleEdit() {
             this.$emit('cancle');
         }
     }

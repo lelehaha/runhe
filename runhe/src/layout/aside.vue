@@ -12,11 +12,11 @@
             <i class="el-icon-notebook-2"></i>
             <span slot="title">章节管理</span>
         </el-menu-item>
-        <el-menu-item index="4" class="submenu-title-noDropdown">
+        <el-menu-item index="/video" class="submenu-title-noDropdown">
             <i class="el-icon-video-camera"></i>
             <span slot="title">视频管理</span>
         </el-menu-item>
-        <el-menu-item index="5" class="submenu-title-noDropdown">
+        <el-menu-item index="/model" class="submenu-title-noDropdown">
             <i class="el-icon-coin"></i>
             <span slot="title">模块管理</span>
         </el-menu-item>

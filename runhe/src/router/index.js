@@ -7,6 +7,8 @@ const Login = () => import('@/views/login/index.vue');
 const Home = () => import('@/views/Home/index');
 const Title = () => import('@/views/Title/index');
 const Chapter = () => import('@/views/Chapter/index');
+const Video = () => import('@/views/Video/index');
+const Model = () => import('@/views/Model/index');
 const routes = [
  {
   path: '/',
@@ -43,6 +45,32 @@ const routes = [
       component: Chapter,
       meta: {
         title: '章节管理'
+      }
+    }
+  ]
+ },
+ {
+  path: '/model',
+  component: Layout,
+  children: [
+    {
+      path: '',
+      component: Model,
+      meta: {
+        title: '模块管理'
+      }
+    }
+  ]
+ },
+ {
+  path: '/video',
+  component: Layout,
+  children: [
+    {
+      path: '',
+      component: Video,
+      meta: {
+        title: '视频管理'
       }
     }
   ]
