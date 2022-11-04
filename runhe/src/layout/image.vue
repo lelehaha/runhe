@@ -1,19 +1,12 @@
 <template>
   <div>
-    <h1>Home</h1>
+    111
   </div>
 </template>
 
 <script>
 export default {
-    data() {
-      return {
 
-      }
-    },
-    methods: {
-      
-    }
 }
 </script>
 

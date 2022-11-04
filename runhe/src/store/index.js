@@ -9,7 +9,10 @@ export default new VueX.Store({
         isCollapse: false,
         user: {
             username: '',
-            avator: ''
+            avator: '',
+            email: '',
+            phone: '',
+            gender: ''
         },
         token: ''
     },
@@ -23,6 +26,13 @@ export default new VueX.Store({
         saveUserProfile(state, playload) {           //将个人信息存储到VueX中的同步函数
             state.user.username = playload.username;
             state.user.avator = playload.avator;
+            state.user.email = playload.email;
+            state.user.phone = playload.phone;
+            if(playload.gender == 1) {
+                state.user.gender = '男';
+            }else {
+                state.user.gender = '女';
+            }
         },
         removeToken(state) {
             state.token = '';

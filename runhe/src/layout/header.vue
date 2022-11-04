@@ -12,7 +12,8 @@
                 <el-image style="width: 35px; height: 35px" class="avator" :src="user.avator"></el-image>
             </span>
             <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>{{user.username}}</el-dropdown-item>
+                <el-dropdown-item @click.native="information">{{user.username}}</el-dropdown-item>
+                <el-dropdown-item @click.native="createAdmin">注册账户</el-dropdown-item>
                 <el-dropdown-item command="layout">退出登陆</el-dropdown-item>
             </el-dropdown-menu>
         </el-dropdown>
@@ -69,7 +70,13 @@ export default {
             this.$cookie.remove('rh_id');
             this.$router.push('/login');
         }
-      } 
+      },
+      information() {
+        this.$router.push('/information');
+      } ,
+      createAdmin() {
+        
+      }
     }
 }
 </script>

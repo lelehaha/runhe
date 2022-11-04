@@ -1,18 +1,16 @@
 <template>
   <div>
-    <h1>Home</h1>
+    {{s}}
   </div>
 </template>
 
 <script>
+import store from '@/store';
 export default {
     data() {
-      return {
-
-      }
-    },
-    methods: {
-      
+        return {
+            s: store.state
+        }
     }
 }
 </script>
