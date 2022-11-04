@@ -72,7 +72,7 @@ export default {
         }
       },
       information() {
-        this.$router.push('/information');
+        this.$router.push('/information',() => {}, () => {});
       } ,
       createAdmin() {
         

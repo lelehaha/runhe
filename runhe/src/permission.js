@@ -22,6 +22,9 @@ router.beforeEach(async (to, from, next) => {     //导航前置守卫
             userProfile = await store.dispatch('getUserProfile');    //没有的话去获取个人信息
         }catch(error) {}
     }
+    // if(userProfile.email) {
+    //     this.$message.error('')
+    // }
     if(!userProfile) {          //检查有无个人信息来判断是否登陆
         if(to.path == '/login') {
             next();
