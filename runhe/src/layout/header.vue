@@ -13,6 +13,7 @@
             </span>
             <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item @click.native="information">{{user.username}}</el-dropdown-item>
+                <el-dropdown-item command="image">修改头像</el-dropdown-item>
                 <el-dropdown-item @click.native="createAdmin">注册账户</el-dropdown-item>
                 <el-dropdown-item command="layout">退出登陆</el-dropdown-item>
             </el-dropdown-menu>
@@ -69,6 +70,8 @@ export default {
             this.$store.commit('removeToken');
             this.$cookie.remove('rh_id');
             this.$router.push('/login');
+        }else if(command == 'image') {
+            this.$router.push('/image');
         }
       },
       information() {
@@ -100,9 +103,6 @@ export default {
     }
     .right {
         margin-right: 20px;
-    }
-    .avator {
-        
     }
     .left {
         display: flex;

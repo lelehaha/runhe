@@ -47,7 +47,7 @@
       <i class="el-icon-s-goods"></i>
       <span slot="title">微信订单</span>
     </el-menu-item>
-    <el-menu-item index="9" class="submenu-title-noDropdown">
+    <el-menu-item index="/logs" class="submenu-title-noDropdown">
       <i class="el-icon-setting"></i>
       <span slot="title">登陆日志</span>
     </el-menu-item>

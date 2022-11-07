@@ -13,6 +13,7 @@ const Manager = () => import('@/views/Manager/index')   //管理员
 const ManagerInster = () => import('@/views/Manager/inster')     //管理员新增
 const Information = () => import('@/views/information/index')     //个人信息
 
+const Logs = () => import('@/views/Logs')    //登陆日志
 const Image = () => import('@/layout/image.vue');   //
 const routes = [
  {
@@ -123,6 +124,19 @@ const routes = [
       component: Information,
       meta: {
         title: '个人信息'
+      }
+    }
+  ]
+},
+{
+  path: '/logs',
+  component: Layout,
+  children: [
+    {
+      path: '',
+      component: Logs,
+      meta: {
+        title: '登陆日志'
       }
     }
   ]
