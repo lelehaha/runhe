@@ -1,7 +1,7 @@
 <template>
   <div class="chapter">
     <Add :state="state" :titleData="titleData" @cancel="cancel" @success="success"></Add>   <!-- 新增 -->
-    <Edit></Edit>
+    <Edit :state="statee" :eid="edit.id" :ename="edit.name" @cancle="cancel" @success="success"></Edit>
     <header class="chapter_search">
       <el-form :inline="true" ref="form" :model="form" label-width="60px" >
         <el-form-item label="标题">
@@ -53,6 +53,11 @@ export default {
   },
   data() {
     return {
+      edit: {
+        id: 0,
+        name: '',
+      },
+      statee: false,
       state: false,
       chapterData: [],
       titleData: [],
@@ -103,7 +108,9 @@ export default {
       this.state = true;
     },
     handleEdit(index, row) {
-
+      this.statee = true;
+      this.edit.id = row.id;
+      this.edit.name = row.name;
     },
     handleDelete(index, row) {
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
@@ -144,6 +151,7 @@ export default {
     },
     cancel() {
       this.state = false;
+      this.statee = false;
     },
     success() {
       this.rerenderChapterData();

@@ -12,7 +12,9 @@ const Model = () => import('@/views/Model/index');      //模块
 const Manager = () => import('@/views/Manager/index')   //管理员
 const ManagerInster = () => import('@/views/Manager/inster')     //管理员新增
 const Information = () => import('@/views/information/index')     //个人信息
-
+const Vip = () => import('@/views/Vip/index');        //会员模块
+const Wx = () => import('@/views/WxOrder/index');    //微信订单
+const Zf = () => import('@/views/zfbOrder//index');    //支付宝订单
 const Logs = () => import('@/views/Logs')    //登陆日志
 const Image = () => import('@/layout/image.vue');   //
 const routes = [
@@ -127,6 +129,39 @@ const routes = [
       }
     }
   ]
+},
+{
+  path: '/vip',
+  component: Layout,
+  children: [{
+    path: '',
+    component: Vip,
+    meta: {
+      title: '会员管理'
+    }
+  }]
+},
+{
+  path: '/wx',
+  component: Layout,
+  children: [{
+    path: '',
+    component: Wx,
+    meta: {
+      title: '微信订单管理'
+    }
+  }]
+},
+{
+  path: '/zfb',
+  component: Layout,
+  children: [{
+    path: '',
+    component: Zf,
+    meta: {
+      title: '支付宝订单管理'
+    }
+  }]
 },
 {
   path: '/logs',

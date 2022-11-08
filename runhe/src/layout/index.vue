@@ -9,7 +9,7 @@
           <Header></Header>
         </el-header>
         <el-main>
-          <keep-alive include="Title">      <!-- keep-alive缓存 -->
+          <keep-alive>      <!-- keep-alive缓存 -->
             <router-view></router-view>
           </keep-alive>
         </el-main>

@@ -21,7 +21,9 @@
       <el-upload action="http://81.68.121.52:8000/api/chapter_video" :headers="header" :on-change="videoad" :show-file-list="false" name="video"
       ref="upload" :data="videoh"
       >
+      <div class="video-add">
         <el-button class="videoAdd">新增视频</el-button>
+      </div>
       </el-upload>
     </header>
         <el-table :data="video" style="width: 100%">
@@ -161,7 +163,7 @@ export default {
       this.searchVideo();
     },
     handleEdit(index,row) {
-      new dplayer({
+      const dp = new dplayer({
         container: document.getElementById('videoAll'),
         logo: 'i',
         video: {
@@ -253,9 +255,11 @@ export default {
   width: 73%;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
 }
+.video-add {
+  background-color: rgb(153, 161, 170);
+}
 .videoAdd {
-  background-color: rgb(196, 227, 149);
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .work:hover {
   color:aqua;

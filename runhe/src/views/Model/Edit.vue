@@ -70,9 +70,9 @@
                      let id = this.formLabelAlign.id.toString();
                      let name = this.formLabelAlign.name;
                      this.$http({
-                         url: 'api/chapter',
+                         url: 'api/course',
                          method: 'PUT',
-                         data: `pk=${id}&chapter_name=${name}`
+                         data: `pk=${id}&name=${name}`
                      }).then(res => {
                          if(res.data.status == 'success') {
                              this.$message({

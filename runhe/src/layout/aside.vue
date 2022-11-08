@@ -35,15 +35,15 @@
       <i class="el-icon-coin"></i>
       <span slot="title">模块管理</span>
     </el-menu-item>
-    <el-menu-item index="6" class="submenu-title-noDropdown">
+    <el-menu-item index="/vip" class="submenu-title-noDropdown">
       <i class="el-icon-user-solid"></i>
       <span slot="title">会员管理</span>
     </el-menu-item>
-    <el-menu-item index="7" class="submenu-title-noDropdown">
+    <el-menu-item index="/zfb" class="submenu-title-noDropdown">
       <i class="el-icon-goods"></i>
       <span slot="title">支付宝订单</span>
     </el-menu-item>
-    <el-menu-item index="8" class="submenu-title-noDropdown">
+    <el-menu-item index="/wx" class="submenu-title-noDropdown">
       <i class="el-icon-s-goods"></i>
       <span slot="title">微信订单</span>
     </el-menu-item>
