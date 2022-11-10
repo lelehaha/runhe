@@ -55,6 +55,7 @@ export default {
           item.create_time = new Date(item.create_time).toLocaleString();
         })
         this.log = response;
+        this.pageTotal = res.data.count * 10;
         // this.log.reverse();
       }).catch(error => {
         this.$message.error('连接异常');

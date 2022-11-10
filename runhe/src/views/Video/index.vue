@@ -208,13 +208,12 @@ export default {
       this.state = true;
     },
     succe() {
-      console.log(this.row)
       this.$http({
         url: 'api/chapter_video',
         method: 'PUT',
-        data: `pk=${this.row.id}?name=${this.videoname}?chapter_id=${this.row.chapter_id}`,
+        data: `pk=${this.row.id}&name=${this.videoname}&chapter_id=${this.row.chapter_id}`,
         headers: {
-          'Content-type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded'
         }
       }).then(res => {
           if(res.data.status == 'error'){
